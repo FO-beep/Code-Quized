@@ -63,6 +63,7 @@ function displayScore() {
 // Event Listeners for Main Buttons
 startBtn.addEventListener("click", startTimer);
 submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
     event.stopPropagation();
     addScore();
     
