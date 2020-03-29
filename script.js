@@ -33,7 +33,7 @@ function setTimer() {
             clearInterval(countdown);
             setTimeout(displayScore, 500);
         }
-    }, 1000);
+    }, 1500);
 }
 
 function makeQuestions() {
@@ -66,7 +66,7 @@ submitBtn.addEventListener("click", function (event) {
     event.stopPropagation();
     addScore();
     
-    window.location.href = './highscores.html'
+    window.location.href = 'viewhighscores.html'
 });
 
 function addScore () {
@@ -103,12 +103,12 @@ answerChoices.addEventListener("click", function (event) {
     // evaluation of user's answer choices & feedback
     if (answer === event.target.textContent) {   
         pEl.innerHTML = "Correct!";
-        setTimeout(hideFeedback,1000);
+        setTimeout(hideFeedback,1500);
         showFeedback();   
     } else {
         pEl.innerHTML = "Sorry, that's incorrect.";
-        setTimeout(hideFeedback,1000);
-        secondsLeft = secondsLeft - 10;
+        setTimeout(hideFeedback,1500);
+        secondsLeft = secondsLeft - 15;
         showFeedback();
     }    
     makeQuestions();
