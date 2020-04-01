@@ -72,7 +72,7 @@ $(document).on("click", ".submitBtn",function(){
 function addScore () {
     userNameInput = document.getElementById("userName").value
     
-    // create a new object with name and score keys
+    // Create a new object
 var newScore = {
         name: userNameInput,
         score: secondsLeft
@@ -80,12 +80,10 @@ var newScore = {
 
     $("#userName").val("")
     // document.getElementById("userName").value = ""
-    // check if there are scores in local storage first(get it)
-    //if not, make a new/blank array
     var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
-    // push object into score array
+    //Local Storage Push objects - highScores
     highScores.push(newScore)
-    // turn objects into an array of strings then put it into local storage
+    // Local Storage - Converting the objects into strings 
     localStorage.setItem("highScores", JSON.stringify(highScores));
 
 }
@@ -103,13 +101,13 @@ function showFeedback(){
 answerChoices.addEventListener("click", function (event) {
     var pEl= document.getElementsByClassName("feedback")[0]
     
-    // evaluation of user's answer choices & feedback
+    // Validate/check User's inputs (feedback...)
     if (answer === event.target.textContent) {   
         pEl.innerHTML = "Correct!";
         setTimeout(hideFeedback,1500);
         showFeedback();   
     } else {
-        pEl.innerHTML = "Sorry, that's incorrect.";
+        pEl.innerHTML = "Wrong X!";
         setTimeout(hideFeedback,1500);
         secondsLeft = secondsLeft - 15;
         showFeedback();
