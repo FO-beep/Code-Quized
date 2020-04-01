@@ -1,5 +1,18 @@
 var questions = [
 
+ 
+    {
+        title: "Which of the following is correct about JavaScript?",
+        choices: ["JavaScript is a lightweight, interpreted programming language.", "JavaScript has object-oriented capabilities that allows you to build interactivity into otherwise static HTML pages.",
+         "The general-purpose core of the language has been embedded in Netscape, Internet Explorer, and other web browsers.", 
+         "All of the above."],
+        answer: "All of the above."
+    },
+    {
+        title: " Which of the following type of variable takes precedence over other if names are same?",
+        choices: ["global variable", "local variable", "Both of the above.", "None of the above."],
+        answer: "local variable."
+    },    
     {
         title: "What is the syntax for referencing an external script called 'abc.js'?",
         choices: ["<script class='abc.js'>", "<script href='abc.js'>", "<script link='abc.js'>", "<script src='abc.js'>"],

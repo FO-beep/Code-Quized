@@ -8,18 +8,17 @@ var userNameInput;
 var questionHead = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
 
-var questionNumber = -1;
+var questionNumber = 0;
 var answer;
 
 
 function startTimer() {
-    // swap welcome msg w/ questions
+    
     document.getElementById("home").classList.add('d-none');
     document.getElementById("quiz").classList.remove('d-none');
-
-    // timer set and begins 90s countdown
+    //This sets the timer 
     setTimer();
-    // create questions to display
+    // Inorder to display the questions, they have to be created first
     makeQuestions();
 }
 
@@ -37,7 +36,7 @@ function setTimer() {
 }
 
 function makeQuestions() {
-    questionNumber++;
+    
     answer = questions[questionNumber].answer
 
     questionHead.textContent = questions[questionNumber].title;
@@ -51,6 +50,7 @@ function makeQuestions() {
         nextChoice.textContent = choices[q]
         answerBtn = answerChoices.appendChild(nextChoice).setAttribute("class", "p-3 m-1 btn btn-light btn-block");
     }
+    questionNumber++;
 }
 
 // display option to enter name to scoreboard
@@ -60,15 +60,14 @@ function displayScore() {
     userScoreEl.textContent = "Your final score is " + secondsLeft + ".";
 }
 
-// Event Listeners for Main Buttons
+// Event Listeners for the Submit Button as well as the Start Button
 startBtn.addEventListener("click", startTimer);
-submitBtn.addEventListener("click", function (event) {
+
+$(document).on("click", ".submitBtn",function(){
     event.preventDefault();
-    event.stopPropagation();
     addScore();
-    
-    window.location.href = 'viewhighscores.html'
-});
+})
+
 
 function addScore () {
     userNameInput = document.getElementById("userName").value
@@ -78,6 +77,9 @@ var newScore = {
         name: userNameInput,
         score: secondsLeft
     };
+
+    $("#userName").val("")
+    // document.getElementById("userName").value = ""
     // check if there are scores in local storage first(get it)
     //if not, make a new/blank array
     var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
